@@ -15,6 +15,12 @@
 	</properties>
 	<dependencies>
 		<!-- Spring -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons -->
+<dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-commons</artifactId>
+    <version>1.13.15.RELEASE</version>
+</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -115,7 +121,88 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>  
+
+		<!-- <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.6.RELEASE</version>
+		</dependency> -->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+<!-- <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>4.0.6.RELEASE</version>
+</dependency>
+		
+		 <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>     -->
+				<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+   		 	<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+   			 <version>8.0.18</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
+<dependency> 
+<groupId>org.springframework</groupId> 
+<artifactId>spring-orm</artifactId> 
+<version>3.1.0.RELEASE</version>
+</dependency>
+
+<dependency> 
+<groupId>org.hibernate</groupId>
+<artifactId>hibernate-core</artifactId> 
+<version>3.5.6-Final</version>
+</dependency>
+
+<dependency>
+<groupId>org.hibernate</groupId>
+<artifactId>hibernate-entitymanager</artifactId> 
+<version>3.5.6-Final</version>
+</dependency>
+<dependency>
+<groupId>org.hibernate</groupId>
+<artifactId>hibernate-annotations</artifactId>
+<version>3.5.6-Final</version>
+</dependency>
+<dependency> <groupId>commons-dbcp</groupId> 
+<artifactId>commons-dbcp</artifactId> 
+<version>1.4</version>
+</dependency>
+
+<dependency>
+<groupId>org.hibernate</groupId> 
+<artifactId>hibernate-validator</artifactId> 
+<version>4.3.1.Final</version>
+</dependency>
+<dependency>
+<groupId>javax.validation</groupId> 
+<artifactId>validation-api</artifactId> 
+<version>1.0.0.GA</version>
+</dependency>
+
+		
+		
+		
 	</dependencies>
     <build>
         <plugins>
