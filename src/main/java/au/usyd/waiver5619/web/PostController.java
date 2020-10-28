@@ -1,21 +1,27 @@
 package au.usyd.waiver5619.web;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import au.usyd.waiver5619.domain.Comment;
+import au.usyd.waiver5619.domain.Page;
 import au.usyd.waiver5619.domain.Post;
+import au.usyd.waiver5619.service.CommentService;
 import au.usyd.waiver5619.service.PostService;
 
 @Controller
@@ -24,6 +30,8 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+	@Autowired
+	private CommentService commentService;
 	
 	@RequestMapping(value = "/apply1", method = RequestMethod.GET)
 	public String apply() {
@@ -79,9 +87,27 @@ public class PostController {
 
 		
 	}
-	
 	 private boolean isDigit1(String strNum) {    
 	     return strNum.matches("[0-9]{1,}");    
-	 } 
+	 }
+	 
+	 @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	 public String postDetail(Model model, Page page, @PathVariable("id") int id) {
+		 Post post=postService.selectPostById(id);
+		 model.addAttribute("post", post);
+		 
+		 page.setRows(post.getCommentCount());
+		 page.setPath("/"+id);
+		 page.setLimit(3);
+		 List<Comment> comments=commentService.findComments(post.getId(), page.getOffset(), page.getLimit());
+		 List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+		 for (Comment comment : comments) {
+			Map<String, Object> map=new HashMap<String, Object>();
+			map.put("comment", comment);
+			list.add(map);
+		}
+		 model.addAttribute("list", list);
+		return "views/donate-info";
+	}
 
 }

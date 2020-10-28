@@ -71,7 +71,7 @@
         <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
           <div class="p-3 d-flex align-items-center border-bottom osahan-post-header" href="donate-info.html">
             <div class="font-weight-bold">
-              <div class="text-truncate"><a href="#">${map.value.title}</a></div>
+              <div class="text-truncate"><a href="./detail/${map.value.id}">${map.value.title}</a></div>
               <div class="small text-gray-500"> ${map.value.username}</div>
             </div>
             <span class="ml-auto small">${map.value.createTime}</span> 

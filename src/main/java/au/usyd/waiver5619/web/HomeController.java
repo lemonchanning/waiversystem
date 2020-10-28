@@ -49,11 +49,9 @@ public class HomeController {
 	public String home(Locale locale, Model model, Page page) {
 
 		page.setRows(postService.selectPostRows(0));
-		System.out.println(page.getRows());
 		page.setPath("/");
 		
 		List<Post> list=postService.findPosts(0, page.getOffset(), page.getLimit());
-		System.out.println(list.size());
 		List<Map<String, Object>> discussList=new ArrayList<Map<String,Object>>();
 		for (Post post : list) {
 			Map<String,Object> map=new HashMap<String, Object>();
