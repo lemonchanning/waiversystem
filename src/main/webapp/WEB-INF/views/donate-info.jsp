@@ -287,10 +287,12 @@
           </div> --%>
           
           <div class="p-3" style="text-align:right;">
+            <form  class="job-search p-3 border-bottom" method="post" action="/waiver5619/add/${post.id}">
             <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
+             <textarea class="form-control" rows="3" name="content"></textarea>
+            <button type="submit" class="btn btn-outline-primary btn-sm mr-1">Post</button>
             </div>
-            <button type="button" class="btn btn-outline-primary btn-sm mr-1">Post</button>
+            </form>
           </div>
         </div>
       </main>
