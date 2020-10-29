@@ -113,8 +113,16 @@
             </c:otherwise>
             </c:choose>
           </div>
-          <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="80"> <a class="font-weight-bold p-3 d-block" href="#"> Upload Support Material</a>
           <button type="submit" class="btn btn-primary btn-sm btn-block">Apply</button>
+        </form>
+        
+        <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="80"> 
+        <form class="job-search p-3 border-bottom" action="testFileUpload" method="POST" enctype="multipart/form-data">
+          File:
+            <input type="file" name="file"/>
+          Description:
+            <input type="text" name="desc"/>
+          <button type="submit" class="btn btn-primary btn-sm btn-block">Upload Support Material</button>
         </form>
       </main>
       
