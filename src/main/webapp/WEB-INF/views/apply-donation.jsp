@@ -116,12 +116,15 @@
           <button type="submit" class="btn btn-primary btn-sm btn-block">Apply</button>
         </form>
         
-        <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="80"> 
         <form class="job-search p-3 border-bottom" action="testFileUpload" method="POST" enctype="multipart/form-data">
-          File:
+        <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="80"> 
+          <p>File:
             <input type="file" name="file"/>
+          </p>
+          <p>
           Description:
             <input type="text" name="desc"/>
+          </p>
           <button type="submit" class="btn btn-primary btn-sm btn-block">Upload Support Material</button>
         </form>
       </main>

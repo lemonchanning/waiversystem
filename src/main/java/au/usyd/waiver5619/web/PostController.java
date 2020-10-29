@@ -49,7 +49,7 @@ public class PostController {
 	public String testFileUpload(@RequestParam("desc") String desc, @RequestParam("file") MultipartFile file,
 			HttpServletRequest request) throws IOException {
 		System.out.println("desc: " + desc);
-		System.out.println("OriginalFilename" + file.getOriginalFilename());
+		System.out.println("OriginalFilename: " + file.getOriginalFilename());
 		System.out.println("InputStream: " + file.getInputStream());
 		
 		//Get File upload real path
@@ -61,7 +61,7 @@ public class PostController {
 		}
 		//Get file name
 		String name = System.currentTimeMillis()+file.getOriginalFilename();
-		System.out.println(path);
+		System.out.println("File path: " + path);
 		File targetFile = new File(path+"/"+name);
 		try {
 			//Write file into the specific path
