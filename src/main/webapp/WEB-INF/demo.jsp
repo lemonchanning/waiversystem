@@ -27,7 +27,7 @@
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
-  <div class="container"> <a class="navbar-brand mr-2" href="index.html"><img src="./resources/image/logo.png" alt="" width="50"> </a>
+  <div class="container"> <a class="navbar-brand mr-2" href="./"><img src="./resources/image/logo.png" alt="" width="50"> </a>
     <!-- <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
       <div class="input-group">
         <input type="text" class="form-control shadow-none border-0" placeholder="Search donations & more..." aria-label="Search" aria-describedby="basic-addon2">
@@ -51,13 +51,13 @@
             </div>
           </form>
         </div>
-\      <li class="nav-item"> <a class="nav-link" href="index.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="./"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
       <li class="nav-item dropdown mr-2"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
         <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow-sm"> <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> <a class="dropdown-item"><i class="feather-users mr-1"></i> Apply for Donation</a> <a class="dropdown-item"><i class="feather-user mr-1"></i> Profile</a> <a class="dropdown-item" href="sign-in.html"><i class="feather-log-in mr-1"></i> Sign In</a> <a class="dropdown-item" href="sign-up.html"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
+        <div class="dropdown-menu dropdown-menu-right shadow-sm"> <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> <a class="dropdown-item"><i class="feather-users mr-1"></i> Apply for Donation</a> <a class="dropdown-item"><i class="feather-user mr-1"></i> Profile</a> <a class="dropdown-item" href="./sign_in"><i class="feather-log-in mr-1"></i> Sign In</a> <a class="dropdown-item" href="sign-up.html"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
       </li>
       <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='profile.html'"> <img class="img-profile rounded-circle" src="./resources/image/p6.png" alt="avatar"> </a> </li>
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='./profile'"> <img class="img-profile rounded-circle" src="./resources/image/p6.png" alt="avatar"> </a> </li>
     </ul>
   </div>
 </nav>
@@ -162,7 +162,7 @@
               <p class="mb-0 text-black-50 small">Amount</p>
             </div>
           </div>
-          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="profile.html"> View my profile </a> </div>
+          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="./profile"> View my profile </a> </div>
         </div>
         <div class="box mb-3 shadow-sm rounded bg-white view-box overflow-hidden">
           <div class="box-title border-bottom p-3">
