@@ -18,6 +18,7 @@ public class CommentDaoImpl implements CommentDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+
 	@Override
 	public List<Comment> findComments(int postId, int offset, int limit) {
 		Session session=sessionFactory.getCurrentSession();

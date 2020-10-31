@@ -37,6 +37,8 @@ public class User {
 	@Column(name = "credits")
 	private double credits;
 	
+	@Column(name = "headerUrl")
+	private String headerUrl;
 	
 	public int getId() {
 		return id;
@@ -86,11 +88,19 @@ public class User {
 	public void setCredits(double credits) {
 		this.credits = credits;
 	}
+	public String getHeaderUrl() {
+		return headerUrl;
+	}
+	public void setHeaderUrl(String headerUrl) {
+		this.headerUrl = headerUrl;
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", salt=" + salt + ", password=" + password + ", email="
-				+ email + ", type=" + type + ", createTime=" + createTime + ", credits=" + credits + "]";
+				+ email + ", type=" + type + ", createTime=" + createTime + ", credits=" + credits + ", headerUrl="
+				+ headerUrl + "]";
 	}
+	
 	
 	
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,14 +54,19 @@ public class HomeController {
 		List<Map<String, Object>> discussList=new ArrayList<Map<String,Object>>();
 		for (Post post : list) {
 			Map<String,Object> map=new HashMap<String, Object>();
-//			User user=userService.selectUserById(post.getUserId());
 			map.put("post", post);
-//			map.put("username",user.getUsername());
 			discussList.add(map);
 		}
 		model.addAttribute("discussList", discussList);
 		
 		return "demo";
+	}
+	
+	@RequestMapping(value = "/test2",method = RequestMethod.GET)
+	public String test() {
+		User user=userService.selectUserByEmail("234@qq.com");
+		System.out.println(user);
+		return "home";
 	}
 	
 	
