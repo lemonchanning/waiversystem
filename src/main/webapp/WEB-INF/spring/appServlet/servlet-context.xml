@@ -26,6 +26,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="au.usyd.waiver5619" />
+	<context:component-scan base-package="util" />
 	
 	
 	

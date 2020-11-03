@@ -64,4 +64,9 @@ public class LoginController {
 		userService.addUser(user);
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "getlogin",method = RequestMethod.GET)
+	public String getLogin() {
+		return "views/sign_in";
+	}
 }

@@ -31,9 +31,11 @@ CREATE TABLE `user` (
   `type` int(11) DEFAULT NULL COMMENT '0-common_user;1-admin;2-poster',
   `create_time` timestamp NULL DEFAULT NULL,
   `credits` double(30,0) DEFAULT NULL,
+  `headerUrl` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  KEY `username` (`username`),
+  KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +44,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (0,'admin','123456','123','234@qq.com',1,'2019-12-31 16:00:00',100),(1,'sam','123','123','111@qq.com',0,'2020-05-01 16:00:00',1),(2,'linda','1','123','332@qq.com',0,'2020-08-08 16:00:00',2);
+INSERT INTO `user` VALUES (0,'admin','123456','123','234@qq.com',1,'2019-12-31 16:00:00',100,NULL),(1,'sam','123','123','111@qq.com',0,'2020-05-01 16:00:00',1,NULL),(2,'linda','1','123','332@qq.com',0,'2020-08-08 16:00:00',2,NULL),(3,'SDD','1234565d5a7','5d5a7','qwer@gmail.com',0,'2020-10-31 18:00:21',0,'http://localhost:8080/waiver5619/user/header/b709ef006b5e479b973d966dfad6b37a.jpg');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-28 21:59:31
+-- Dump completed on 2020-11-03 23:13:55

@@ -43,4 +43,8 @@ public class UserService {
 		user.setCredits(0);
 		userDao.addUser(user);
 	}
+	
+	public void updateHeader(int userId, String headerUrl) {
+		userDao.updateHeaderUrl(userId, headerUrl);
+	}
 }

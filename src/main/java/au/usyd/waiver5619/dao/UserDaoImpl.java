@@ -47,7 +47,7 @@ public class UserDaoImpl implements UserDao{
 		Session session=sessionFactory.getCurrentSession();
 		User user=(User)session.get(User.class, id);
 		user.setPassword(password);
-		session.save(user);
+		session.update(user);
 	}
 
 	@Override
@@ -56,6 +56,14 @@ public class UserDaoImpl implements UserDao{
 		SQLQuery query=session.createSQLQuery("select * from User where email='"+email+"'");
 		List<User> user=(List<User>)query.addEntity(User.class).list();
 		return user.get(0);
+	}
+
+	@Override
+	public void updateHeaderUrl(int id, String headerUrl) {
+		Session session=sessionFactory.getCurrentSession();
+		User user=(User)session.get(User.class, id);
+		user.setHeaderUrl(headerUrl);
+		session.update(user);
 	}
 
 }

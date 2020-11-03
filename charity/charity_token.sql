@@ -16,34 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comment`
+-- Table structure for table `token`
 --
 
-DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `comment` (
+CREATE TABLE `token` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `post_id` int(11) DEFAULT NULL,
-  `post_name` varchar(45) DEFAULT NULL,
-  `username` varchar(45) DEFAULT NULL,
-  `content` varchar(255) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `status` int(11) DEFAULT '0' COMMENT '0-invalid; 1-valid',
+  `expired` timestamp NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `target_id` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  KEY `token` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comment`
+-- Dumping data for table `token`
 --
 
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','I can help','2020-10-27 16:00:00'),(2,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','1','2020-10-27 16:00:00'),(3,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','2','2020-10-27 05:13:10'),(4,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','3','2020-10-27 05:15:40'),(5,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','4','2020-10-27 16:00:00'),(6,1,6,'Let\'s do the donation!','Sam','12345','2020-10-28 18:25:01'),(7,1,6,'Let\'s do the donation!','Sam','nihsad','2020-10-29 14:46:30');
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+LOCK TABLES `token` WRITE;
+/*!40000 ALTER TABLE `token` DISABLE KEYS */;
+/*!40000 ALTER TABLE `token` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-03 23:13:54
+-- Dump completed on 2020-11-03 23:13:55

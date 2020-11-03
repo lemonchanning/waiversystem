@@ -8,4 +8,5 @@ public interface UserDao {
 	void removeUser(int id);
 	void updatePassword(int id, String password);
 	User selectUserByEmail(String email);
+	void updateHeaderUrl(int id, String headerUrl);
 }

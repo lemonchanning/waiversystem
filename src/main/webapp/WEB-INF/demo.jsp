@@ -56,13 +56,15 @@
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow-sm">
         <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
-        <a class="dropdown-item"><i class="feather-users mr-1"></i> Apply for Donation</a> 
-        <a class="dropdown-item"><i class="feather-user mr-1"></i> Profile</a> 
-        <a class="dropdown-item" href="#"><i class="feather-log-in mr-1"></i> Sign In</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/getlogin"><i class="feather-log-in mr-1"></i> Sign In</a> 
         <a class="dropdown-item" href="${pageContext.request.contextPath}/getregister"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
       </li>
       <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='profile.html'"> <img class="img-profile rounded-circle" src="./resources/image/p6.png" alt="avatar"> </a> </li>
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> 
+      <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="./resources/image/p6.png" alt="avatar"> </a> </li>
     </ul>
   </div>
 </nav>
