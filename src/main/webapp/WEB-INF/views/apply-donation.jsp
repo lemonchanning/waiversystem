@@ -27,7 +27,7 @@
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
-  <div class="container"> <a class="navbar-brand mr-2" href="index.html"><img src="${pageContext.request.contextPath}/resources/image/logo.png" alt="" width="50"> </a>
+  <div class="container"> <a class="navbar-brand mr-2" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/image/logo.png" alt="" width="50"> </a>
    
     <ul class="navbar-nav ml-auto d-flex align-items-center">
       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -44,14 +44,39 @@
           </form>
         </div>
       </li>
-      <li class="nav-item"> <a class="nav-link" href="index.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
-      <li class="nav-item dropdown mr-2"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
+		<li class="nav-item"> 
+		<a class="nav-link" href="${pageContext.request.contextPath}/"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> 
+		</li>      
+		<li class="nav-item dropdown mr-2"> 
+      	<a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
+        
         <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow-sm"> <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> <a class="dropdown-item"><i class="feather-users mr-1"></i> Apply for Donation</a> <a class="dropdown-item"><i class="feather-user mr-1"></i> Profile</a> <a class="dropdown-item" href="sign-in.html"><i class="feather-log-in mr-1"></i> Sign In</a> <a class="dropdown-item" href="sign-up.html"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
+        <div class="dropdown-menu dropdown-menu-right shadow-sm">
+        <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="feather-log-in mr-1"></i> Log out</a> 
+        </div>
       </li>
     
       <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='profile.html'"> <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> </a> </li>
+      <c:choose>
+      <c:when test="${loginUserHeader==null}">
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> 
+      <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> 
+      </a> 
+      </li>      
+      </c:when>
+      
+      <c:otherwise>
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+     <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/user/header/${filename}/" alt="avatar"> 
+      </a> 
+      </li>
+      </c:otherwise>
+      </c:choose>
     </ul>
   </div>
 </nav>
@@ -64,7 +89,9 @@
       <!-- Apply -->
       <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
         <h3 class="font-weight-bold text-dark mb-0 text-truncate">Apply for a new donation</h3>
-        <form class="job-search p-3 border-bottom" method="post" action="./apply2">
+        
+        
+        <form class="job-search p-3 border-bottom" method="post" action="${pageContext.request.contextPath}/apply2" enctype="multipart/form-data">
           <div class="form-group">
             <h6 class="font-weight-bold text-dark mb-0 text-truncate">Title</h6>
             <c:choose>
@@ -113,30 +140,56 @@
             </c:otherwise>
             </c:choose>
           </div>
-          <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="80"> <a class="font-weight-bold p-3 d-block" href="#"> Upload Support Material</a>
+          <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="80"> 
+          <!-- <a class="font-weight-bold p-3 d-block" href="#"> Upload Support Material</a> -->
+          <input type="file" name="multipartFiles" multiple="multiple"/>
           <button type="submit" class="btn btn-primary btn-sm btn-block">Apply</button>
         </form>
       </main>
       
       <!-- Profile -->
       <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
+      
+      <c:choose>
+      	<c:when test="${loginUserHeader==null }">
         <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
           <div class="p-5"> <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid" alt="Responsive image"> </div>
           <div class="p-3 border-top border-bottom">
-            <h5 class="font-weight-bold text-dark mb-1 mt-0">Tom Han</h5>
-            <p class="mb-0 text-muted">Sydney, AU </p>
+            <h5 class="font-weight-bold text-dark mb-1 mt-0">${loginUser.username}</h5>
+           <!--  <p class="mb-0 text-muted">Sydney, AU </p> -->
           </div>
           <div class="p-3">
             <div class="d-flex align-items-top mb-2">
-              <p class="mb-0 text-muted">Posted</p>
-              <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">1 day ago</p>
+              <p class="mb-0 text-muted">User Type</p>
+              <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">Common User</p>
             </div>
-            <div class="d-flex align-items-top">
+            <!-- <div class="d-flex align-items-top">
               <p class="mb-0 text-muted">Donation Times</p>
               <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">25</p>
-            </div>
+            </div> -->
           </div>
         </div>
+        </c:when>
+        <c:otherwise>
+        <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+          <div class="p-5"> <img src="${pageContext.request.contextPath}/user/header/${filename}/" class="img-fluid" alt="Responsive image"> </div>
+          <div class="p-3 border-top border-bottom">
+            <h5 class="font-weight-bold text-dark mb-1 mt-0">${loginUser.username}</h5>
+           <!--  <p class="mb-0 text-muted">Sydney, AU </p> -->
+          </div>
+          <div class="p-3">
+            <div class="d-flex align-items-top mb-2">
+              <p class="mb-0 text-muted">User Type</p>
+              <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">Common User</p>
+            </div>
+            <!-- <div class="d-flex align-items-top">
+              <p class="mb-0 text-muted">Donation Times</p>
+              <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">25</p>
+            </div> -->
+          </div>
+        </div>
+        </c:otherwise>
+      </c:choose>
         <div class="box mb-3 shadow-sm rounded bg-white view-box overflow-hidden">
           <div class="box-title border-bottom p-3">
             <h6 class="m-0">Donation Views</h6>

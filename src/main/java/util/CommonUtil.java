@@ -5,8 +5,10 @@ import java.util.UUID;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
+
 public class CommonUtil {
 
+	
 	public static String randomSalt() {
 		return UUID.randomUUID().toString().substring(0,5).replaceAll("-", "");
 	}

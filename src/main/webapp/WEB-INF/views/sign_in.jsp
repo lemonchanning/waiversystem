@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,21 +33,41 @@
             <h5 class="font-weight-bold mt-3">Welcome Back</h5>
             <p class="text-muted">The strength of people makes the community powerful</p>
           </div>
-          <form action="./">
+          <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group">
-              <label class="mb-1">Email or Phone</label>
+              <label class="mb-1">Email</label>
               <div class="position-relative icon-form-control"> <i class="feather-user position-absolute"></i>
-                <input type="email" class="form-control">
+              <c:choose>
+              <c:when test="${emailMsg==null&&nullMsg==null}">
+                <input type="email" name="email" class="form-control">
+               </c:when>
+               <c:when test="${emailMsg!=null&&nullMsg==null}">
+                <input type="email" name="email" class="form-control is-invalid" placeholder="${emailMsg}">
+               </c:when>
+               <c:otherwise>
+                <input type="email" name="email" class="form-control is-invalid" placeholder="${nullMsg}">
+               </c:otherwise>
+           	  </c:choose>
               </div>
             </div>
             <div class="form-group">
               <label class="mb-1">Password</label>
               <div class="position-relative icon-form-control"> <i class="feather-unlock position-absolute"></i>
-                <input type="password" class="form-control">
+              <c:choose>
+              <c:when test="${passwordMsg==null&&wrongMsg==null}">
+                <input type="password" name="password" class="form-control">
+              </c:when>
+              <c:when test="${passwordMsg!=null&&wrongMsg==null}">
+                <input type="password" name="password" class="form-control is-invalid" placeholder="${passwordMsg}">
+              </c:when>
+              <c:otherwise>
+             	 <input type="password" name="password" class="form-control is-invalid" placeholder="${wrongMsg}">
+              </c:otherwise>
+               </c:choose>
               </div>
             </div>
             <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" name="rememberme">
               <label class="custom-control-label" for="customCheck1">Remember password</label>
             </div>
             <button class="btn btn-primary btn-block text-uppercase" type="submit"> Sign in </button>
@@ -63,7 +85,7 @@
                 </div>
               </div>
             </div>
-            <div class="py-3 d-flex align-item-center"> <a href="./fgt_psd">Forgot password?</a> <span class="ml-auto"> New to Wave? <a class="font-weight-bold" href="sign-up.html">Join now</a></span> </div>
+            <div class="py-3 d-flex align-item-center"> <a href="${pageContext.request.contextPath}/user/getreset">Forgot password?</a> <span class="ml-auto"> New to Wave? <a class="font-weight-bold" href="${pageContext.request.contextPath}/getregister">Join now</a></span> </div>
           </form>
         </div>
       </div>

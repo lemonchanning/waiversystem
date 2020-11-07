@@ -14,33 +14,24 @@
 <link rel="icon" type="image/png" href="./resources/image/logo.png">
 <title>Home</title>
 <!-- Slick Slider -->
-<link rel="stylesheet"  href="./resources/vendor/slick/slick.min.css"/>
-<script src="./resources/js/jquery-3.5.1.js"></script>
-<link rel="stylesheet"  href="./resources/vendor/slick/slick-theme.min.css"/>
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/resources/vendor/slick/slick.min.css"/>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.js"></script>
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/resources/vendor/slick/slick-theme.min.css"/>
 <!-- Feather Icon-->
-<link href="./resources/vendor/icons/feather.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/icons/feather.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<link href="./resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles -->
-<link href="./resources/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
-  <div class="container"> <a class="navbar-brand mr-2" href="index.html"><img src="./resources/image/logo.png" alt="" width="50"> </a>
-    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
-      <div class="input-group">
-        <input type="text" class="form-control shadow-none border-0" placeholder="Search donations & more..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn" type="button"> <i class="feather-search"></i> </button>
-        </div>
-      </div>
-    </form> -->
+  <div class="container"> <a class="navbar-brand mr-2" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/image/logo.png" alt="" width="50"> </a>
+   
     <ul class="navbar-nav ml-auto d-flex align-items-center">
     
-      <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-<!--       <li class="nav-item dropdown no-arrow d-sm-none"> <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-search mr-2"></i> </a> 
- -->        <!-- Dropdown - Messages -->
+     
         <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
           <form class="form-inline mr-auto w-100 navbar-search">
             <div class="input-group">
@@ -51,20 +42,57 @@
             </div>
           </form>
         </div>
-\      <li class="nav-item"> <a class="nav-link" href="index.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
+        
+        
+      	<li class="nav-item"> 
+		<a class="nav-link" href="${pageContext.request.contextPath}/"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> 
+		</li>
+		
+		
       <li class="nav-item dropdown mr-2"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
         <!-- Dropdown - User Information -->
+        <c:choose>
+        <c:when test="${currentUser==null}">
         <div class="dropdown-menu dropdown-menu-right shadow-sm">
         <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
         <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
         <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
         <a class="dropdown-item" href="${pageContext.request.contextPath}/getlogin"><i class="feather-log-in mr-1"></i> Sign In</a> 
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/getregister"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/getregister"><i class="feather-lock mr-1"></i> Sign Up</a> 
+        </div>
+        </c:when>
+        <c:otherwise>
+        <div class="dropdown-menu dropdown-menu-right shadow-sm">
+        <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="feather-log-in mr-1"></i> Log out</a> 
+        </div>
+        </c:otherwise>
+        </c:choose>
       </li>
       <!-- Nav Item - User Information -->
+      
+     <c:choose>
+      <c:when test="${currentUser==null||userImage==null}">
       <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> 
       <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
-      <img class="img-profile rounded-circle" src="./resources/image/p6.png" alt="avatar"> </a> </li>
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> 
+      </a> 
+      </li>      
+      </c:when>
+      
+      <c:otherwise>
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+     <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/user/header/${filename}/" alt="avatar"> 
+      </a> 
+      </li>
+      </c:otherwise>
+      </c:choose>
+      
+      
+      
     </ul>
   </div>
 </nav>
@@ -87,14 +115,14 @@
             <p class="mb-0">${map.value.content}</p>
           </div>
           <div class="p-3 border-bottom osahan-post-footer">
-            <p>Target amount  5320/${map.value.targetAmount}</p>
-            <a href="#" class="mr-3 text-secondary"><em class="feather-heart text-danger"></em> 16</a> 
-            <a href="#" class="mr-3 text-secondary"><em class="feather-message-square"></em> 8</a> 
-            <a href="#" class="mr-3 text-secondary"><em class="feather-share-2"></em> 2</a> 
-            </div>
+            <p>Target amount  ${map.value.targetAmount}/${map.value.actualAmount}</p>
+            <a href="#" class="mr-3 text-secondary"><em class="feather-message-square"></em> ${map.value.commentCount}</a> 
+           </div>
           <div class="p-3">
-            <button type="button" class="btn btn-outline-primary btn-sm mr-1">Donate!!</button>
-          </div>
+           <button type="button" class="btn btn-outline-primary btn-sm mr-1" onClick="window.location.href ='${pageContext.request.contextPath}/donate/${map.value.id}'">
+           Donate!!
+           </button>
+ 		</div>
         </div>
         	</c:forEach>
        </c:forEach>
@@ -154,8 +182,10 @@
 		</c:if>
       </main>
       <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
+      <c:choose>
+      <c:when test="${currentUser==null}">
         <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
-          <div class="py-4 px-3 border-bottom"> <img src="./resources/image/p6.png" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+          <div class="py-4 px-3 border-bottom"> <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
             <h5 class="font-weight-bold text-dark mb-1 mt-4">Username</h5>
             <p class="mb-0 text-muted">Poster</p>
           </div>
@@ -169,8 +199,50 @@
               <p class="mb-0 text-black-50 small">Amount</p>
             </div>
           </div>
-          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="profile.html"> View my profile </a> </div>
+          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="${pageContext.request.contextPath}/user/setting"> View my profile </a> </div>
         </div>
+        </c:when>
+        
+        <c:when test="${currentUser!=null&&userImage==null }">
+         <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+          <div class="py-4 px-3 border-bottom"> <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+            <h5 class="font-weight-bold text-dark mb-1 mt-4">${currentUser.username}</h5>
+            <p class="mb-0 text-muted">Poster</p>
+          </div>
+          <div class="d-flex">
+            <div class="col-6 border-right p-3">
+              <h6 class="font-weight-bold text-dark mb-1">25</h6>
+              <p class="mb-0 text-black-50 small">Donations</p>
+            </div>
+            <div class="col-6 p-3">
+              <h6 class="font-weight-bold text-dark mb-1">$4,500</h6>
+              <p class="mb-0 text-black-50 small">Amount</p>
+            </div>
+          </div>
+          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="${pageContext.request.contextPath}/user/setting"> View my profile </a> </div>
+        </div>
+        </c:when>
+        
+        <c:otherwise>
+         <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+          <div class="py-4 px-3 border-bottom"> <img src="${pageContext.request.contextPath}/user/header/${filename}/" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+            <h5 class="font-weight-bold text-dark mb-1 mt-4">${currentUser.username}</h5>
+            <p class="mb-0 text-muted">Poster</p>
+          </div>
+          <div class="d-flex">
+            <div class="col-6 border-right p-3">
+              <h6 class="font-weight-bold text-dark mb-1">25</h6>
+              <p class="mb-0 text-black-50 small">Donations</p>
+            </div>
+            <div class="col-6 p-3">
+              <h6 class="font-weight-bold text-dark mb-1">$4,500</h6>
+              <p class="mb-0 text-black-50 small">Amount</p>
+            </div>
+          </div>
+          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="${pageContext.request.contextPath}/user/setting"> View my profile </a> </div>
+        </div>
+        </c:otherwise>
+       </c:choose>
         <div class="box mb-3 shadow-sm rounded bg-white view-box overflow-hidden">
           <div class="box-title border-bottom p-3">
             <h6 class="m-0">Donation Views</h6>
@@ -185,15 +257,15 @@
               <p class="mb-0 text-black-50 small">Since last week</p>
             </div>
           </div>
-          <div class="overflow-hidden border-top text-center"> <img src="./resources/image/chart.png" class="img-fluid" alt="Responsive image"> </div>
+          <div class="overflow-hidden border-top text-center"> <img src="${pageContext.request.contextPath}/resources/image/chart.png" class="img-fluid" alt="Responsive image"> </div>
         </div>
-        <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center"> <img src="./resources/image/job1.png" class="img-fluid" alt="Responsive image">
+        <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center"> <img src="${pageContext.request.contextPath}/resources/image/job1.png" class="img-fluid" alt="Responsive image">
           <div class="p-3 border-bottom">
             <h6 class="font-weight-bold text-dark">Wave</h6>
             <p class="mb-0 text-muted">Looking for Help?</p>
           </div>
           <div class="p-3">
-            <button type="button" class="btn btn-outline-primary pl-4 pr-4" onClick="window.location.href ='./apply1'"> POST A Donation </button>
+            <button type="button" class="btn btn-outline-primary pl-4 pr-4" onClick="window.location.href ='${pageContext.request.contextPath}/apply1'"> POST A Donation </button>
           </div>
         </div>
       </aside>
@@ -203,26 +275,26 @@
             <h6 class="m-0">More Donation Projects</h6>
           </div>
           <div class="box-body p-3"> <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p1.png" alt=""> </div>
+            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p1.png" alt=""> </div>
             <div class="font-weight-bold overflow-hidden">
               <div class="text-truncate">Cancer treatment donation</div>
               <div class="small text-gray-500">Posted · 58m</div>
             </div>
             </a> <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p2.png" alt=""> </div>
+            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p2.png" alt=""> </div>
             <div class="font-weight-bold overflow-hidden">
               <div class="text-truncate">Leukemia Treatment Donation</div>
               <div class="small text-gray-500">Posted · 1d</div>
             </div>
             </a> <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p3.png" alt=""> </div>
+            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p3.png" alt=""> </div>
             <div class="font-weight-bold overflow-hidden">
               <div class="text-truncate">AIDS treatment donation</div>
               <div class="small text-gray-500">Posted · 2d</div>
             </div>
             </a> </div>
         </div>
-        <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden"> <img src="./resources/image/ads1.png" class="img-fluid" alt="Responsive image">
+        <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden"> <img src="${pageContext.request.contextPath}/resources/image/ads1.png" class="img-fluid" alt="Responsive image">
           <div class="p-3 border-bottom">
             <h6 class="font-weight-bold text-gold">Wave</h6>
             <p class="mb-0 text-muted">Make our world better</p>
@@ -237,21 +309,21 @@
           </div>
           <div class="box-body">
             <div class="d-flex align-items-center osahan-post-header p-3 border-bottom people-list">
-              <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p1.png" alt=""> </div>
+              <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p1.png" alt=""> </div>
               <div class="font-weight-bold">
                 <div class="text-truncate">Covid-19 </div>
                 <div class="small text-muted"><span class="text-primary">Donated 3 hours ago</span> $2,000 </div>
               </div>
             </div>
             <div class="d-flex align-items-center osahan-post-header p-3 border-bottom people-list">
-              <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p2.png" alt=""> </div>
+              <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p2.png" alt=""> </div>
               <div class="font-weight-bold">
                 <div class="text-truncate">Cancer</div>
                 <div class="small text-muted"><span class="text-primary">Donated 5 days ago</span> $1,500 </div>
               </div>
             </div>
             <div class="d-flex align-items-center osahan-post-header p-3 people-list">
-              <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p3.png" alt=""> </div>
+              <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p3.png" alt=""> </div>
               <div class="font-weight-bold">
                 <div class="text-truncate">AIDS</div>
                 <div class="small text-muted"><span class="text-primary">Donated 1 month ago</span> $1,000 </div>
@@ -264,11 +336,11 @@
   </div>
 </div>
 <!-- Bootstrap core JavaScript --> 
-<script src="./resources/vendor/jquery/jquery.min.js"></script> 
-<script src="./resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
 <!-- slick Slider JS--> 
-<script src="./resources/vendor/slick/slick.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/vendor/slick/slick.min.js"></script> 
 <!-- Custom scripts for all pages--> 
-<script src="./resources/js/osahan.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/osahan.js"></script>
 </body>
 </html>

@@ -61,4 +61,12 @@ public class CommentDaoImpl implements CommentDao{
 		session.delete(comment);
 	}
 
+	@Override
+	public void updateCommentUser(int userId, String image) {
+		Session session=sessionFactory.getCurrentSession();
+		Comment comment=(Comment)session.get(Comment.class, userId);
+		comment.setHeaderImage(image);
+		session.update(comment);
+	}
+
 }

@@ -42,17 +42,46 @@
       <li class="nav-item"> <a class="nav-link" href="./"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
       <li class="nav-item dropdown mr-2"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
         <!-- Dropdown - User Information -->
+       <c:choose>
+        <c:when test="${user1==null}">
         <div class="dropdown-menu dropdown-menu-right shadow-sm">
         <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
-        <a class="dropdown-item"><i class="feather-users mr-1"></i> Apply for Donation</a> 
-        <a class="dropdown-item"><i class="feather-user mr-1"></i> Profile</a> 
-        <a class="dropdown-item" href="sign_in"><i class="feather-log-in mr-1"></i> Sign In</a> 
-        <a class="dropdown-item" href="sign-up.html"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/getlogin"><i class="feather-log-in mr-1"></i> Sign In</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/getregister"><i class="feather-lock mr-1"></i> Sign Up</a> 
+        </div>
+        </c:when>
+        <c:otherwise>
+         <div class="dropdown-menu dropdown-menu-right shadow-sm">
+        <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="feather-log-in mr-1"></i> Log out</a> 
+        </div>
+        </c:otherwise>
+        </c:choose>
       </li>
+      
       <!-- Nav Item - User Information -->
+      <c:choose>
+      <c:when test="${user1==null||header1==null}">
       <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> 
-      <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
-      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> </a> </li>
+      <a class="nav-link dropdown-toggle pr-0" href="${pageContext.request.contextPath}/user/setting" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> 
+      </a> 
+      </li>      
+      </c:when>
+      
+      <c:otherwise>
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+     <a class="nav-link dropdown-toggle pr-0" href="${pageContext.request.contextPath}/user/setting" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/user/header/${filename}/" alt="avatar"> 
+      </a> 
+      </li>
+      </c:otherwise>
+      </c:choose>
+      
     </ul>
   </div>
 </nav>
@@ -62,21 +91,34 @@
       <!-- Main Content -->
       <aside class="col col-xl-3 order-xl-1 col-lg-12 order-lg-1 col-12">
         <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+
+        <c:choose>
+        <c:when test="${header1==null&&user1!=null}">
           <div class="py-4 px-3 border-bottom"> 
-          <c:choose>
-          <c:when test="${map.key==null}">
-          <img src="${pageContext.request.contextPath}/user/header/${filename}" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+          <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+            <h5 class="font-weight-bold text-dark mb-1 mt-4">${user1.username }</h5>
+            <p class="mb-0 text-muted">Common User</p>
+          </div>
           </c:when>
           <c:otherwise>
-          <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
-          </c:otherwise>
-          </c:choose>
-            <h5 class="font-weight-bold text-dark mb-1 mt-4">Tom Han</h5>
-            <p class="mb-0 text-muted">Administrator</p>
+          <div class="py-4 px-3 border-bottom"> 
+          <img src="${pageContext.request.contextPath}/user/header/${filename}/" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+            <h5 class="font-weight-bold text-dark mb-1 mt-4">${user1.username}</h5>
+            <p class="mb-0 text-muted">Common User</p>
           </div>
+          </c:otherwise>
+        </c:choose>
           
           <form class="job-search p-3 border-bottom" action="${pageContext.request.contextPath}/user/upload" method="POST" enctype="multipart/form-data" >
+          <c:choose>
+          <c:when test="${fileMsg!=null}">
             <input type="file" name="multipartFile"/>
+             <div class="invalid-feedback">${fileMsg}</div>
+          </c:when>
+          <c:otherwise>
+          <input type="file" name="multipartFile"/>
+          </c:otherwise>
+          </c:choose>
           <button type="submit" class="btn btn-primary btn-sm btn-block">Change Avatar</button>
         </form>
         
@@ -90,7 +132,7 @@
               <p class="mb-0 text-black-50 small">Amount</p>
             </div>
           </div>
-          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="./sign_in"> Log Out </a> </div>
+          <div class="overflow-hidden border-top"> <a class="font-weight-bold p-3 d-block" href="${pageContext.request.contextPath}/logout"> Log Out </a> </div>
         </div>
         <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center"> <img src="${pageContext.request.contextPath}/resources/image/job1.png" class="img-fluid" alt="Responsive image">
           <div class="p-3 border-bottom">
@@ -98,7 +140,7 @@
             <p class="mb-0 text-muted">Ask for help?</p>
           </div>
           <div class="p-3">
-            <button type="button" class="btn btn-outline-primary pl-4 pr-4" onclick="window.location.href='./apply1'"> POST A Donation </button>
+            <button type="button" class="btn btn-outline-primary pl-4 pr-4" onclick="window.location.href='${pageContext.request.contextPath}/apply1'"> POST A Donation </button>
           </div>
         </div>
       </aside>

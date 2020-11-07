@@ -18,7 +18,6 @@ import au.usyd.waiver5619.domain.Post;
 @Repository
 @Transactional
 public class PostDaoImpl implements PostDao{
-	private final static Logger LOGGER=LoggerFactory.getLogger(PostDaoImpl.class);
 
 	@Autowired
 	private SessionFactory factory;
@@ -35,14 +34,7 @@ public class PostDaoImpl implements PostDao{
 		session.delete(post);
 	}
 
-	@Override
-	public void updatePost(int id, int type) {
-		Session session=factory.getCurrentSession();
-		Post post=(Post) session.get(Post.class, id);
-		post.setType(type);
-		session.update(post);
-	}
-
+	
 	@Override
 	public Post selectPostById(int id) {
 		Session session=factory.getCurrentSession();
@@ -74,19 +66,34 @@ public class PostDaoImpl implements PostDao{
 		Session session=factory.getCurrentSession();
 		int count1=0;
 		if (userId!=0) {
-//			long count= ((Long)session.createSQLQuery("select count(id) from Post where user_id="+userId).iterate().next()).intValue();
 			SQLQuery query=session.createSQLQuery("select count(id) from Post where user_id="+userId);
 			BigInteger count=(BigInteger)query.uniqueResult();
 			count1=count.intValue();
 
 		}else {
-//			long count= ((Long)session.createSQLQuery("select count(id) from Post").iterate().next()).intValue();
-//			count1=(int)count;
 			SQLQuery query=session.createSQLQuery("select count(id) from Post");
 			BigInteger count=(BigInteger)query.uniqueResult();
 			count1=count.intValue();
 
 		}
 		return count1;
+	}
+
+	@Override
+	public void updatePost(int id, double actualAmount) {
+		Session session=factory.getCurrentSession();
+		Post post=(Post) session.get(Post.class, id);
+		post.setActualAmount(actualAmount);
+		session.update(post);
+	}
+
+	@Override
+	public void updateCommentCount(int id, int commentCount) {
+		System.out.println(commentCount);
+		Session session=factory.getCurrentSession();
+		Post post=(Post) session.get(Post.class, id);
+		post.setCommentCount(commentCount);
+		session.update(post);
+		
 	}
 }

@@ -30,10 +30,11 @@ CREATE TABLE `comment` (
   `username` varchar(45) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `target_id` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +43,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','I can help','2020-10-27 16:00:00'),(2,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','1','2020-10-27 16:00:00'),(3,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','2','2020-10-27 05:13:10'),(4,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','3','2020-10-27 05:15:40'),(5,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','4','2020-10-27 16:00:00'),(6,1,6,'Let\'s do the donation!','Sam','12345','2020-10-28 18:25:01'),(7,1,6,'Let\'s do the donation!','Sam','nihsad','2020-10-29 14:46:30');
+INSERT INTO `comment` VALUES (1,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','I can help','2020-10-27 16:00:00',NULL),(2,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','1','2020-10-27 16:00:00',NULL),(3,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','2','2020-10-27 05:13:10',NULL),(4,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','3','2020-10-27 05:15:40',NULL),(5,1,6,'PLEASE CONTRIBUTE YOURSELF!!!','Sam','4','2020-10-27 16:00:00',NULL),(6,1,6,'Let\'s do the donation!','Sam','12345','2020-10-28 18:25:01',NULL),(7,1,6,'Let\'s do the donation!','Sam','nihsad','2020-10-29 14:46:30',NULL),(8,1,8,'Help','Sam','mercy!','2020-11-06 10:38:37',NULL),(9,1,9,'ERD challenges ','Sam','s','2020-11-06 13:02:20',NULL),(10,1,8,'Help','Sam','kkkk','2020-11-07 06:21:35',NULL),(16,4,10,'HIIII','Amy','dss','2020-11-07 13:29:48','http://localhost:8080/waiver5619/user/header/14c367ad083741a29befe93beccc4db5.jpg'),(17,5,10,'HIIII','dog','sdasd','2020-11-07 18:09:25','http://localhost:8080/waiver5619/user/header/a466d2be40cb45d7b6810dbf6b9d29eb.jpeg'),(18,6,10,'HIIII','Villa','I am villa!','2020-11-07 18:12:22',NULL);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-03 23:13:54
+-- Dump completed on 2020-11-07 23:18:13

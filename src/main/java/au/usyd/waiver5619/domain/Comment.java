@@ -35,6 +35,9 @@ public class Comment {
 	@Column(name = "create_time")
 	private Date createTime;
 	
+	@Column(name = "image")
+	private String headerImage;
+	
 	
 	public int getId() {
 		return id;
@@ -78,11 +81,19 @@ public class Comment {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
+	public String getHeaderImage() {
+		return headerImage;
+	}
+	public void setHeaderImage(String headerImage) {
+		this.headerImage = headerImage;
+	}
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", content=" + content + ", postId=" + postId + ", postName=" + postName
-				+ ", userId=" + userId + ", username=" + username + ", createTime=" + createTime + "]";
+				+ ", userId=" + userId + ", username=" + username + ", createTime=" + createTime + ", headerImage="
+				+ headerImage + "]";
 	}
+	
 	
 	
 }

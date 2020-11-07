@@ -10,4 +10,5 @@ public interface CommentDao {
 	void addComment(Comment comment);
 	void updateCommentById(int id);
 	void removeComment(int id);
+	void updateCommentUser(int userId, String image);
 }

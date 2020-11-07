@@ -27,14 +27,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
   <div class="container"> <a class="navbar-brand mr-2" href="index.html"><img src="${pageContext.request.contextPath}/resources/image/logo.png" alt="" width="50"> </a>
-   <!--  <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
-      <div class="input-group">
-        <input type="text" class="form-control shadow-none border-0" placeholder="Search donations & more..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn" type="button"> <i class="feather-search"></i> </button>
-        </div>
-      </div>
-    </form> -->
+  
     <ul class="navbar-nav ml-auto d-flex align-items-center">
       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
       <li class="nav-item dropdown no-arrow d-sm-none"> <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-search mr-2"></i> </a> 
@@ -53,90 +46,48 @@
       <li class="nav-item"> <a class="nav-link" href="index.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
       <li class="nav-item dropdown mr-2"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
         <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow-sm"> <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> <a class="dropdown-item"><i class="feather-users mr-1"></i> Apply for Donation</a> <a class="dropdown-item"><i class="feather-user mr-1"></i> Profile</a> <a class="dropdown-item" href="sign-in.html"><i class="feather-log-in mr-1"></i> Sign In</a> <a class="dropdown-item" href="sign-up.html"><i class="feather-lock mr-1"></i> Sign Up</a> </div>
+        <c:choose>
+        <c:when test="${loginUser==null}">
+        <div class="dropdown-menu dropdown-menu-right shadow-sm">
+        <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/getlogin"><i class="feather-log-in mr-1"></i> Sign In</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/getregister"><i class="feather-lock mr-1"></i> Sign Up</a> 
+        </div>
+        </c:when>
+        <c:otherwise>
+        <div class="dropdown-menu dropdown-menu-right shadow-sm">
+        <a class="dropdown-item" href="#"><i class="feather-briefcase mr-1"></i> My Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/apply1"><i class="feather-users mr-1"></i> Apply for Donation</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/user/setting"><i class="feather-user mr-1"></i> Profile</a> 
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="feather-log-in mr-1"></i> Log out</a> 
+        </div>
+        </c:otherwise>
+        </c:choose>
       </li>
-     <!--  <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-message-square"></i> 
-        Counter - Alerts 
-        <span class="badge badge-danger badge-counter">5</span> </a> 
-        Dropdown - Alerts
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-          <h6 class="dropdown-header"> Message Center </h6>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p1.png" alt=""> </div>
-          <div class="font-weight-bold overflow-hidden">
-            <div class="text-truncate">Cancer treatment donation</div>
-            <div class="small text-gray-500">Emily Fowler · 58m</div>
-          </div>
-          </a> <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p2.png" alt=""> </div>
-          <div class="overflow-hidden">
-            <div class="text-truncate">Leukemia Treatment Donation</div>
-            <div class="small text-gray-500">Jae Chun · 1d</div>
-          </div>
-          </a> <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="./resources/image/p3.png" alt=""> </div>
-          <div class="overflow-hidden">
-            <div class="text-truncate">AIDS treatment donation</div>
-            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-          </div>
-          </a> <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a> 
-          </div>
-      </li> -->
-      <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-bell"></i> 
-        Counter - Alerts 
-        <span class="badge badge-info badge-counter">6</span> </a> 
-        Dropdown - Alerts
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-          <h6 class="dropdown-header"> Alerts Center </h6>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="mr-3">
-            <div class="icon-circle bg-primary"> <i class="feather-download-cloud text-white"></i> </div>
-          </div>
-          <div>
-            <div class="small text-gray-500">December 12, 2019</div>
-            <span class="font-weight-bold">A new Donation has begin!</span> </div>
-          </a> <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="mr-3">
-            <div class="icon-circle bg-success"> <i class="feather-edit text-white"></i> </div>
-          </div>
-          <div>
-            <div class="small text-gray-500">December 7, 2019</div>
-            $290.29 has been deposited into your account! </div>
-          </a> <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="mr-3">
-            <div class="icon-circle bg-warning"> <i class="feather-folder text-white"></i> </div>
-          </div>
-          <div>
-            <div class="small text-gray-500">December 2, 2019</div>
-            You have donate $120 for now! Thanks for your kindness! </div>
-          </a> <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> </div>
-      </li> -->
-      
       <!-- Nav Item - User Information -->
+      
+       <c:choose>
+      <c:when test="${loginUserHeader==null}">
       <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown"> 
-      <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='profile.html'"> 
-      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> </a> </li>
+      <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="avatar"> 
+      </a> 
+      </li>      
+      </c:when>
+      
+      <c:otherwise>
+      <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+     <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="window.location.href ='${pageContext.request.contextPath}/user/setting'"> 
+      <img class="img-profile rounded-circle" src="${pageContext.request.contextPath}/user/header/${filename}/" alt="avatar"> 
+      </a> 
+      </li>
+      </c:otherwise>
+      </c:choose>
     </ul>
   </div>
 </nav>
-<div class="bg-white shadow-sm border-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="d-flex align-items-center py-3">
-          <div class="profile-left">
-            <h5 class="font-weight-bold text-dark mb-1 mt-0">Covid-19 Donation</h5>
-            <p class="mb-0 text-muted"><a class="mr-2 font-weight-bold" href="#">${post.username}</a> <i class="feather-map-pin"></i> Sydney, AU -- DatePosted ${post.createTime}</p>
-          </div>
-          <div class="profile-right ml-auto">
-            <button type="button" class="btn btn-light mr-1"> &nbsp; Save &nbsp; </button>
-            <button type="button" class="btn btn-primary"> &nbsp; Donate &nbsp; </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="py-4">
   <div class="container">
     <div class="row"> 
@@ -148,11 +99,10 @@
           </div>
           <div class="box-body p-3">
             <p>${post.content} </p>
-          <!--   <p>Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.  Older people and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness. </p>
-            <p class="mb-0">The best way to prevent and slow down transmission is to be well informed about the COVID-19 virus, the disease it causes and how it spreads. Protect yourself and others from infection by washing your hands or using an alcohol-based rub frequently and not touching your face. ...<a class="mr-2 font-weight-bold" href="#">Read More</a> </p> -->
+        
           </div>
           <div class="p-3" style="text-align:right;">
-            <button type="button" class="btn btn-outline-primary btn-sm mr-1">Donate Now!!!</button>
+            <button type="button" class="btn btn-outline-primary btn-sm mr-1" onClick="window.location.href ='${pageContext.request.contextPath}/donate/${post.id}'">Donate Now!!!</button>
           </div>
         </div>
         <div class="box shadow-sm border rounded bg-white mb-3">
@@ -164,15 +114,11 @@
               <tbody>
                 <tr class="border-bottom">
                   <th class="p-3">Need donation amount</th>
-                  <td class="p-3">$${post.targetAmount}</td>
+                  <td class="p-3">$ ${post.targetAmount}</td>
                 </tr>
                 <tr class="border-bottom">
                   <th class="p-3">Donation amount received</th>
-                  <td class="p-3">$12,000</td>
-                </tr>
-                <tr class="border-bottom">
-                  <th class="p-3">Number of donations</th>
-                  <td class="p-3">3450 </td>
+                  <td class="p-3">$ ${post.actualAmount}</td>
                 </tr>
                 <tr class="border-bottom">
                   <th class="p-3">Description</th>
@@ -182,26 +128,35 @@
             </table>
           </div>
         </div>
+        
+         <c:if test="${links!=null}">
         <div class="box mb-3 shadow-sm border rounded bg-white osahan-post"> 
-        <img src="${pageContext.request.contextPath}/resources/image/p14.png" class="img-fluid" alt="Responsive image"> 
-        <img src="${pageContext.request.contextPath}/resources/image/p15.png" class="img-fluid" alt="Responsive image">
-          <!-- <div class="p-3 osahan-post-body">
-            <h5 class="mb-3">About</h5>
-            <p>Welcome to Wave! We’re so happy you found us. Since you’ve come this far, we’d love to take the opportunity to introduce ourselves.</p>
-            <p class="mb-0">Our story begins in 2020. We are a nonprofit organization. We hope that we can use everyone’s strength to improve the world’s hunger, poverty, and the inability to afford medical expenses. We hope world peace. We hope the world to be better. </p>
-          </div> -->
-<!--           <div class="overflow-hidden border-top text-center"> <a class="font-weight-bold p-3 d-block" href="#"> READ MORE </a> </div>
- -->        </div>
+       
+         <c:forEach items="${links}"  var="link">
+        <img src="${pageContext.request.contextPath}/file/${link.imageName}/" class="img-fluid" alt="Responsive image"> 
+        </c:forEach>
+        </div>
+        </c:if>
+        
         <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
           <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
             <div class="font-weight-bold">
               <div class="text-truncate">Comments</div>
             </div>
             <span class="ml-auto"></span> </div>
+            
          <c:forEach items="${list}" var="comments">
          	<c:forEach items="${comments}" var="map">
-          <div class="p-3 d-flex align-items-center border-bottom osahan-post-header" href="donate-info.html">
-            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="">
+          <div class="p-3 d-flex align-items-center border-bottom osahan-post-header" href="#">
+            <div class="dropdown-list-image mr-3"> 
+            <c:choose>
+            <c:when test="${map.value.headerImage==null}">
+            <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="">
+            </c:when>
+            <c:otherwise>
+            <img class="rounded-circle" src="${pageContext.request.contextPath}/user/header/${map.value.headerImage}/" alt="">
+            </c:otherwise>
+            </c:choose>
               <div class="status-indicator bg-success"></div>
             </div>
             <div class="font-weight-bold">
@@ -273,23 +228,17 @@
           	</ul>
           </nav>
           </c:if>
-         <%--  <div class="p-3 d-flex align-items-center border-bottom osahan-post-header" href="donate-info.html">
-            <div class="dropdown-list-image mr-3"> <img class="rounded-circle" src="${pageContext.request.contextPath}/resources/image/p6.png" alt="">
-              <div class="status-indicator bg-success"></div>
-            </div>
-            <div class="font-weight-bold">
-              <div class="text-truncate">Mike</div>
-              <div class="small text-gray-500">wave user</div>
-            </div>
-            <span class="ml-auto small">4 hours ago</span> </div>
-          <div class="p-3 border-bottom osahan-post-body">
-            <p class="mb-0">Please help those people!</p>
-          </div> --%>
-          
           <div class="p-3" style="text-align:right;">
             <form  class="job-search p-3 border-bottom" method="post" action="/waiver5619/add/${post.id}">
             <div class="form-group">
+            <c:choose>
+            <c:when test="${loginUser!=null }">
              <textarea class="form-control" rows="3" name="content"></textarea>
+             </c:when>
+             <c:otherwise>
+              <textarea class="form-control is-invalid" rows="3" name="content" placeholder="You should log in first!!"></textarea>
+             </c:otherwise>
+             </c:choose>
             <button type="submit" class="btn btn-outline-primary btn-sm mr-1">Post</button>
             </div>
             </form>
@@ -298,21 +247,28 @@
       </main>
       <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
         <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
-          <div class="p-5"> <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid" alt="Responsive image"> </div>
+        <c:choose>
+        	<c:when test="${filename1==null}">
+          <div class="p-5"> 
+          <img src="${pageContext.request.contextPath}/resources/image/p6.png" class="img-fluid" alt="Responsive image"> 
+          </div>
+          </c:when>
+          <c:otherwise>
+           <img src="${pageContext.request.contextPath}/user/header/${filename1}/" class="img-fluid" alt="Responsive image"> 
+          </c:otherwise>
+        </c:choose>
           <div class="p-3 border-top border-bottom">
             <h5 class="font-weight-bold text-dark mb-1 mt-0">${post.username}</h5>
-            <p class="mb-0 text-muted">Sydney, AU </p>
+            <p class="mb-0 text-muted">Wave User </p>
           </div>
           <div class="p-3">
             <div class="d-flex align-items-top mb-2">
               <p class="mb-0 text-muted">Posted</p>
               <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">${post.createTime}</p>
             </div>
-            <div class="d-flex align-items-top">
-              <p class="mb-0 text-muted">Donation Times</p>
-              <p class="font-weight-bold text-dark mb-0 mt-0 ml-auto">25</p>
-            </div>
+            
           </div>
+       
         </div>
         <div class="box mb-3 shadow-sm rounded bg-white view-box overflow-hidden">
           <div class="box-title border-bottom p-3">
@@ -333,27 +289,27 @@
         <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center"> </div>
       </aside>
       <aside class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
+      
         <div class="box mb-3 shadow-sm border rounded bg-white osahan-post">
           <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
             <div class="font-weight-bold">
-              <div class="text-truncate">Supporting Materials</div>
+              <div class="text-truncate">About us</div>
             </div>
             <span class="ml-auto"></span> </div>
-          <a class="font-weight-bold p-3 d-block" href="#">
-          <img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="20"> Donation Details File Download </a> <a class="font-weight-bold p-3 d-block" href="#"><img src="${pageContext.request.contextPath}/resources/image/file_icon.png" class="img-fluid" alt="Responsive image" width="20"> Licensed Materials Download</a>
+          <div class="p-5"> <img src="${pageContext.request.contextPath}/resources/image/wave.png" class="img-fluid" alt="Responsive image"> </div>
           <div class="p-3 osahan-post-body">
-            <h5 class="mb-3">About Donation Material Audit</h5>
-            <p>All materials provided by the project have been approved by the site administrator.</p>
-            <p class="mb-0">All materials provided by the donation project need to be reviewed by the administrator. The project needs to comply with Wave's policies and terms. Any project that violates Wave regulations will be disqualified and forced offline. </p>
+            <h5 class="mb-3">What is WAVE?</h5>
+            <p>We are a nonprofit organization. We hope that we can use everyone’s strength to improve the world’s hunger, poverty, and the inability to afford medical expenses. We hope world peace. We hope the world to be better.</p >
           </div>
-          <div class="overflow-hidden border-top text-center"> <a class="font-weight-bold p-3 d-block" href="#"> READ MORE </a> </div>
+          <div class="overflow-hidden border-top text-center"> <a class="font-weight-bold p-3 d-block" href="${pageContext.request.contextPath}/getregister"> JOIN US </a > </div>
         </div>
-        <button type="button" class="btn btn-lg btn-block btn-danger mb-3"> <i class="feather-bell"></i> Set alert for Donation </button>
+        
+       <!--  <button type="button" class="btn btn-lg btn-block btn-danger mb-3"> <i class="feather-bell"></i> Set alert for Donation </button>
         <div class="box shadow-sm border rounded bg-white mb-3">
           <div class="box-title border-bottom p-3">
             <h6 class="m-0">Similar Donation Projects </h6>
-          </div>
-          <div class="box-body p-3"> <a href="donate-info.html">
+          </div> -->
+         <%--  <div class="box-body p-3"> <a href="donate-info.html">
             <div class="shadow-sm border rounded bg-white job-item">
               <div class="d-flex align-items-center p-3 job-item-header">
                 <div class="overflow-hidden mr-2">
@@ -367,11 +323,12 @@
                 <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="${pageContext.request.contextPath}/resources/image/p3.png" alt="" data-original-title="Sophia Lee"> 
                 <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="${pageContext.request.contextPath}/resources/image/p1.png" alt="" data-original-title="John Doe"> 
                 <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="${pageContext.request.contextPath}/resources/image/p2.png" alt="" data-original-title="Robert Cook"> </div>
-                <span class="font-weight-bold text-muted">18 projects</span> </div>
+                <span class="font-weight-bold text-muted">18 projects</span>
+                 </div>
               <div class="p-3 job-item-footer"> <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small> </div>
             </div>
-            </a> </div>
-        </div>
+            </a> </div> --%>
+        <!-- </div> -->
         <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden"> <img src="${pageContext.request.contextPath}/resources/image/ads1.png" class="img-fluid" alt="Responsive image">
           <div class="p-3 border-bottom">
             <h6 class="font-weight-bold text-gold">Wave</h6>

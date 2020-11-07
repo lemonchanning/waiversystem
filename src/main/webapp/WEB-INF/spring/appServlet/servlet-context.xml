@@ -4,17 +4,15 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
-		https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		https://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/beans 
-		https://www.springframework.org/schema/beans/spring-beans.xsd
+		https://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context 
 		https://www.springframework.org/schema/context/spring-context.xsd">
-
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	
@@ -28,6 +26,32 @@
 	<context:component-scan base-package="au.usyd.waiver5619" />
 	<context:component-scan base-package="util" />
 	
+	<!-- Interceptor -->
+	<beans:bean id="tokenInterceptor" class="au.usyd.waiver5619.Interceptor.TokenInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/css/*.css"/>
+			<exclude-mapping path="/resources/js/*.js"/>
+			<exclude-mapping path="/resources/vendor/**"/>
+			<exclude-mapping path="/resources/image/*.png"/>
+			<exclude-mapping path="/resources/image/*.jpg"/>
+			<exclude-mapping path="/resources/image/*.jpeg"/>
+			<beans:ref bean="tokenInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
-	
+	<beans:bean id="loginInterceptor" class="au.usyd.waiver5619.Interceptor.LoginInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/css/*.css"/>
+			<exclude-mapping path="/resources/js/*.js"/>
+			<exclude-mapping path="/resources/vendor/**"/>
+			<exclude-mapping path="/resources/image/*.png"/>
+			<exclude-mapping path="/resources/image/*.jpg"/>
+			<exclude-mapping path="/resources/image/*.jpeg"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

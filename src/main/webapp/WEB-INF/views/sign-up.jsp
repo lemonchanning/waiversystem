@@ -66,8 +66,12 @@
               <label class="mb-1">Email</label>
               <div class="position-relative icon-form-control"> <i class="feather-at-sign position-absolute"></i>
                <c:choose>
-            	<c:when test="${emailMsg==null}">
+            	<c:when test="${emailMsg==null&&mailMsg==null}">
                 <input type="email" class="form-control" name="email">
+                 </c:when>
+                 <c:when test="${mailMsg!=null}">
+                <input type="email" class="form-control is-invalid" name="email"  placeholder="${mailMsg}">
+                ${mailMsg}
                  </c:when>
             	<c:otherwise>
             	<input type="email" class="form-control is-invalid" name="email" placeholder="${emailMsg}">
@@ -78,7 +82,7 @@
           
             
             <div class="form-group">
-              <label class="mb-1">Password (6 or more characters)</label>
+              <label class="mb-1">Password</label>
               <div class="position-relative icon-form-control"> <i class="feather-unlock position-absolute"></i>
               <c:choose>
               	<c:when test="${passMsg==null}">

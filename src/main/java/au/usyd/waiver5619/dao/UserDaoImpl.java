@@ -55,6 +55,9 @@ public class UserDaoImpl implements UserDao{
 		Session session=sessionFactory.getCurrentSession();
 		SQLQuery query=session.createSQLQuery("select * from User where email='"+email+"'");
 		List<User> user=(List<User>)query.addEntity(User.class).list();
+		if (user.size()==0) {
+			return null;
+		}
 		return user.get(0);
 	}
 
