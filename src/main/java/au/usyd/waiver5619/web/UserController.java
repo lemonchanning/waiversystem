@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import au.usyd.waiver5619.annotation.LoginRequired;
 import au.usyd.waiver5619.domain.User;
+import au.usyd.waiver5619.service.CommentService;
 import au.usyd.waiver5619.service.UserService;
 import util.Constant;
 import util.HostHolder;
@@ -41,6 +42,9 @@ public class UserController implements Constant{
 	
 	@Autowired
 	private HostHolder hostHolder;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	/**
 	 * @description: get user profile, login required
@@ -97,13 +101,14 @@ public class UserController implements Constant{
 		try {
 			multipartFile.transferTo(file);
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
+			logger.debug(e.getMessage());
 		}
 		
 		//image url
 		String url=WEBPATH+"/user/header/"+filename;
 	
 		userService.updateHeader(hostHolder.getUser().getId(), url);
+		commentService.updateCommentUser(hostHolder.getUser().getId(), url);
 		return "redirect:/user/setting";
 	}
 	

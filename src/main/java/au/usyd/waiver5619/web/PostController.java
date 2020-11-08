@@ -193,9 +193,7 @@ public class PostController implements Constant{
 				if (comment.getHeaderImage()!=null) {
 					String header=comment.getHeaderImage().substring(comment.getHeaderImage().lastIndexOf("/"));
 					header=header.substring(1);
-					System.out.println("header+ "+header);
 					comment.setHeaderImage(header);
-					System.out.println("header "+comment.getHeaderImage());
 				}
 				Map<String, Object> map=new HashMap<String, Object>();
 				map.put("comment", comment);
@@ -215,6 +213,11 @@ public class PostController implements Constant{
 			 List<Comment> comments=commentService.findComments(post.getId(), page.getOffset(), page.getLimit());
 			 List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
 			 for (Comment comment : comments) {
+				 if (comment.getHeaderImage()!=null) {
+						String header=comment.getHeaderImage().substring(comment.getHeaderImage().lastIndexOf("/"));
+						header=header.substring(1);
+						comment.setHeaderImage(header);
+					}
 				Map<String, Object> map=new HashMap<String, Object>();
 				map.put("comment", comment);
 				list.add(map);

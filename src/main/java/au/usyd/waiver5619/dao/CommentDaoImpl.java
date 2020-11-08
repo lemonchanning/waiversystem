@@ -64,9 +64,17 @@ public class CommentDaoImpl implements CommentDao{
 	@Override
 	public void updateCommentUser(int userId, String image) {
 		Session session=sessionFactory.getCurrentSession();
-		Comment comment=(Comment)session.get(Comment.class, userId);
-		comment.setHeaderImage(image);
-		session.update(comment);
+		SQLQuery query=session.createSQLQuery("select * from Comment where user_id="+userId);
+		List<Comment> list=(List<Comment>)query.addEntity(Comment.class).list();
+		if (list==null||list.size()==0) {
+			System.out.println("null such user!");
+			return;
+		}
+		
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).setHeaderImage(image);
+			session.update(list.get(i));
+		}
 	}
 
 }

@@ -33,6 +33,7 @@ public class CommentService {
 	}
 	
 	public void updateCommentUser(int userId, String url) {
+		System.out.println("CommentService "+userId+url);
 		commentDao.updateCommentUser(userId, url);
 	}
 }

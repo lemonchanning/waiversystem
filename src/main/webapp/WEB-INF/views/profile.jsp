@@ -39,7 +39,7 @@
             </div>
           </form>
         </div>
-      <li class="nav-item"> <a class="nav-link" href="./"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Donations</span></a> </li>
       <li class="nav-item dropdown mr-2"> <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="feather-file-text mr-2"></i><span class="d-none d-lg-inline">Pages</span> </a> 
         <!-- Dropdown - User Information -->
        <c:choose>
